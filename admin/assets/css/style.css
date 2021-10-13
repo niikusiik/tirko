@@ -1,0 +1,128 @@
+.login {
+    margin: 50px auto;
+    width: 600px;
+    padding: 25px;
+}
+
+.login button {
+    width: 100%;
+    text-align: center;
+}
+
+.login a, .login a:hover {
+    color: #666;
+}
+
+.w-full , .admin {
+    height: 100vh;
+}
+
+.right-top {
+    height: 50px;
+    background: #000;
+    margin-left: -20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 25px;
+    margin-right: -20px;
+}
+
+.right-top ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.right-top ul a {
+    color: #ddd;
+}
+
+.user-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0 15px;
+    background: #222;
+}
+
+.user-box img {
+    width: 100px;
+    border-radius: 50%;
+}
+
+.user-box p {
+    margin-top: 10px;
+}
+
+.left-box {
+    padding-right: 0 !important;
+    position: fixed !important;
+    width: 200px !important;
+    height: 100vh;
+    left: 0;
+    z-index: 1;
+    padding-left: 0 !important;
+}
+
+.left-box ul {
+    list-style: none;
+    margin: 15px 0 0;
+    padding: 0;
+}
+
+.left-box ul li {
+    width: 100%;
+}
+
+.left-box ul li a {
+    color: #fff;
+    width: 100%;
+    padding: 6px 15px;
+    display: block;
+}
+
+.left-box ul li a:hover {
+    background: green;
+    text-decoration: none;
+}
+
+.user-info {
+    text-align: center;
+    font-size: 13px;
+    color: #aaa;
+    margin: -10px 0 0 !important;
+}
+
+.table-box {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+
+.table-box p.top {
+    color: #555;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+h1 {
+    color: #000 !important;
+    font-size: 32px !important;
+    margin: 15px 0 !important;
+}
+
+.bg-grey {
+    background: #fbf9f9;
+    padding-left: 220px !important;
+    padding-right: 20px;
+}
+
+.user-name {
+    color: #fff;
+}
+
+.bg-black {
+    background: #000;
+}
