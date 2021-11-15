@@ -1,11 +1,5 @@
 <?php 
     include '../../assets/header.php';
-
-    if(isset($_GET['action']) && $_GET['action'] == "logout") {
-        unset($_SESSION);
-        header('Location: ../login/index.php');
-        exit();
-    }
 ?>
 <body>
 <div class="admin">
@@ -30,18 +24,34 @@
             </ul>
         </div>
 
-          <h1>Aktuality - <span>publikované články</span></h1>
+          <h1>Uživatelia - <span>aktívni uživatelia</span></h1>
           <div class="table-box">
-              <p class="top">Aktuality v Národnom parku</p>
               <table class="table">
                   <thead>
                     <tr>
                         <th>#</th>
-                        <th>Názov článku</th>
-                        <th>Status</th>
-                        <th>Úprava článku</th>
+                        <th>Username</th>
+                        <th>Meno</th>
+                        <th>Rola</th>
+                        <th>Úprava</th>
                     </tr>
                   </thead>
+                  <tbody>
+                    <?php
+                        $query = 'SELECT * FROM uzivatelia';
+                        $users = $mysql->query($query);
+
+                        while($row = $users->fetch_assoc()) {
+                            echo "<tr>
+                                        <td>".$row['id']."</td>
+                                        <td>".$row['login']."</td>
+                                        <td>".$row['meno']."</td>
+                                        <td>".$row['rola']."</td>
+                                        <td><a href='#' class='btn-primary btn btn-sm'>Upraviť</a></td>
+                                    </tr>";
+                        }
+                    ?>
+                  </tbody>
               </table>
           </div>
     </div>

@@ -1,27 +1,44 @@
 <?php
     include '../../assets/header.php';
 
-    $users = file('users.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+//    $users = file('users.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-        foreach ($users as $user) {
+        $query = "SELECT * FROM uzivatelia WHERE login='".$_POST['meno']."' AND heslo = '".$_POST['heslo']."'";
+        $row = $mysql->query($query);
+        $user = $row->fetch_assoc();
 
-            list($username, $pass, $name, $type) = explode('::', $user);
+        if($_POST['meno'] == $user['login'] && $_POST['heslo'] == $user['heslo']) {
 
-            if($_POST['meno'] == $username && $_POST['heslo'] == $pass) {
+            $_SESSION['username'] = $user['login'];
+            $_SESSION['meno'] = $user['meno'];
+            $_SESSION['rola'] = $user['rola'];
+            $_SESSION['login'] = true;
 
-                $_SESSION['meno'] = $_POST['meno'];
-                $_SESSION['login'] = true;
+            header('Location: ../uzivatelia/index.php');
+            exit();
 
-                header('Location: ../aktuality/index.php');
-                exit();
-            }
-            else {
-                $chyba = true;
-            }
-
+        } else {
+            $chyba = true;
         }
+//        foreach ($users as $user) {
+//
+//            list($username, $pass, $name, $type) = explode('::', $user);
+//
+//            if($_POST['meno'] == $username && $_POST['heslo'] == $pass) {
+//
+//                $_SESSION['meno'] = $_POST['meno'];
+//                $_SESSION['login'] = true;
+//
+//                header('Location: ../aktuality/index.php');
+//                exit();
+//            }
+//            else {
+//                $chyba = true;
+//            }
+
+//        }
 
     }
 
@@ -69,7 +86,7 @@
     <form class="was-validated" action="index.php" method="POST">
         <div class="form-group">
             <label for="i1"><b>Meno</b></label>
-            <input type="text" pattern="\S(.*\S)?.{4,}" id="i1" name="meno" class="form-control" placeholder="Zadaj meno..." required>
+            <input type="text" id="i1" name="meno" class="form-control" placeholder="Zadaj meno..." required>
             <div class="invalid-feedback">
                 Prosíme vyplniť túto položku.
             </div>

@@ -1,4 +1,24 @@
-<?php session_start(); ?>
+<?php
+    session_start();
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "tirko";
+
+    $mysql = new mysqli($servername, $username, $password, $database);
+
+    if ($mysql->connect_error) {
+        die("Connection failed: " . $mysql->connect_error);
+    }
+
+    if(isset($_GET['action']) && $_GET['action'] == "logout") {
+        unset($_SESSION);
+        header('Location: ../login/index.php');
+        exit();
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
